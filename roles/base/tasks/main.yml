@@ -1,0 +1,20 @@
+---
+   include_vars: "{{item}"
+   with_items:
+     - base_vars.yaml 
+   task: Install base packages
+   yum: name={{item}} status=latest
+   with_items:
+     - httpd
+     - epel-release
+     - python2-pip
+     - vim
+     - bash-completion
+   notify:
+     service: name={{item}}  status=restarted enabled=yes
+     with_itmes:
+       - httpd
+       - firewalld
+   task: Create Directory Structure
+   path: name='/var/www/{{app_name}}' state=present
+   path: name='/var/www/{{app_name}}/cgi-bin' state=present
