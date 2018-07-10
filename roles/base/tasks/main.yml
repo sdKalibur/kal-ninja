@@ -1,20 +1,25 @@
 ---
-   include_vars: "{{item}"
-   with_items:
-     - base_vars.yaml 
-   task: Install base packages
-   yum: name={{item}} status=latest
-   with_items:
-     - httpd
-     - epel-release
-     - python2-pip
-     - vim
-     - bash-completion
-   notify:
-     service: name={{item}}  status=restarted enabled=yes
-     with_itmes:
+   - name: Include app vars
+     include_vars:
+       file: base_vars.yaml
+       #       name: appname
+       
+   - name : Install base packages
+     yum: name={{item}} state=latest
+     with_items:
+       - httpd
+       - epel-release
+       - python2-pip
+       - vim
+       - bash-completion
+   - notify:
+     systemd: name={{item}}  state=restarted enabled=yes
+     with_items:
        - httpd
        - firewalld
-   task: Create Directory Structure
-   path: name='/var/www/{{app_name}}' state=present
-   path: name='/var/www/{{app_name}}/cgi-bin' state=present
+    
+   - name: Create Webapp Directory Structure
+     file: path=/var/www/{{app_name}} state=directory
+
+   - name: Create cgi-bin dir
+     file: path=/var/www/{{app_name}}/cgi-bin state=directory
