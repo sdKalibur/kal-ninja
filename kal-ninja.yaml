@@ -1,0 +1,6 @@
+---
+   - hosts: kal-ninjas
+     user: root
+     # ask_become_pass: no
+     roles: 
+       - base
