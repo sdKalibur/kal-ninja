@@ -8,6 +8,12 @@
      yum: name={{item}} state=latest
      with_items:
        - httpd
+       - tree
+       - python34-pip
+       - mariadb
+       - mongodb
+       - wget
+       - elinks
        - epel-release
        - python2-pip
        - vim
@@ -17,9 +23,11 @@
      with_items:
        - httpd
        - firewalld
+       - mariadb
+       - mongodb
     
    - name: Create Webapp Directory Structure
-     file: path=/var/www/{{app_name}} state=directory
+     file: path=/var/www/html/{{app_name}} state=directory
 
    - name: Create cgi-bin dir
-     file: path=/var/www/{{app_name}}/cgi-bin state=directory
+     file: path=/var/www/html/{{app_name}}/cgi-bin state=directory
