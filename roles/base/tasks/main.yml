@@ -23,8 +23,8 @@
      with_items:
        - httpd
        - firewalld
-       - mariadb
-       - mongodb
+       - mariadb-server
+       - mongodb-server
     
    - name: Create Webapp Directory Structure
      file: path=/var/www/html/{{app_name}} state=directory
