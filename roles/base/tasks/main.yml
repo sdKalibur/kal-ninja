@@ -10,8 +10,8 @@
        - httpd
        - tree
        - python34-pip
-       - mariadb
-       - mongodb
+       - mariadb-server
+       - mongodb-server
        - wget
        - elinks
        - epel-release
