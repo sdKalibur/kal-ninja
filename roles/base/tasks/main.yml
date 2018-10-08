@@ -11,7 +11,8 @@
        - tree
        - python34-pip
        - mariadb
-       - mongodb-server
+       - mongodb
+       - python-pymongo
        - wget
        - elinks
        - epel-release
