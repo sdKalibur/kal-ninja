@@ -10,7 +10,7 @@
        - httpd
        - tree
        - python34-pip
-       - mariadb-server
+       - mariadb
        - mongodb-server
        - wget
        - elinks
