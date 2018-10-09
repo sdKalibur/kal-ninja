@@ -24,7 +24,7 @@
      with_items:
        - httpd
        - firewalld
-       - mariadb-server
+       - mariadb
        - mongod
     
    - name: Create Webapp Directory Structure
